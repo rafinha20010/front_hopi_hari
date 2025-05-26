@@ -19,7 +19,8 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         
         if (response.ok) {
             // Salvar dados do usuário no localStorage (para demonstração)
-            localStorage.setItem('user', JSON.stringify(data.token)); // 2
+            localStorage.setItem('token', JSON.stringify(data.token)); // 2
+            localStorage.setItem('user', JSON.stringify(data.user));
             
             // Redirecionar para a página principal (após login bem-sucedido)
             alert('Login realizado com sucesso!');
