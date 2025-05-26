@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Hopi Hari</title>
-    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
     <div class="register-container">
         <div class="register-logo">
-            <img src="logo.png" alt="Logo Hopi Hari">
+            <img src="../images/logo.png" alt="Logo Hopi Hari">
         </div>
         <h1>Cadastre-se</h1>
         <form id="registerForm">
@@ -49,56 +49,11 @@
             </div>
             <button type="submit" class="register-btn">CADASTRAR</button>
             <div class="login-link">
-                Já tem uma conta? <a href="login.html">Faça login</a>
+                Já tem uma conta? <a href="../login/login.html">Faça login</a>
             </div>
         </form>
     </div>
 
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Verificação de senha
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (password !== confirmPassword) {
-                alert('As senhas não coincidem!');
-                return;
-            }
-            
-            // Preparar dados para envio
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                password: password,
-                birthDate: document.getElementById('birthDate').value,
-                phone: document.getElementById('phone').value
-            };
-            
-            try {
-                const response = await fetch('/api/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    alert('Cadastro realizado com sucesso!');
-                    window.location.href = 'login.html';
-                } else {
-                    alert(`Erro: ${data.message || 'Ocorreu um erro no cadastro'}`);
-                }
-            } catch (error) {
-                console.error('Erro:', error);
-                alert('Erro de conexão. Tente novamente mais tarde.');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
